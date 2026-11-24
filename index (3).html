@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Service Rapide : réparation de téléphones à Toamasina. Écran, batterie, dos, circuit de charge. Diagnostic gratuit sur place.">
+<meta name="theme-color" content="#12304a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Service Rapide – Réparation de téléphones à Toamasina</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%B1%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f5;--card:#fff;--ink:#12304a;--mut:#51657a;--line:#d5dde3;--acc:#ffc93c;--onacc:#12304a;--ok:#1e8e5a;--hd:#12304a;--onhd:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1b28;--card:#152a3c;--ink:#eaf1f6;--mut:#9fb2c3;--line:#2a4054;--ok:#46c487;--hd:#0a141d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1b28;--card:#152a3c;--ink:#eaf1f6;--mut:#9fb2c3;--line:#2a4054;--ok:#46c487;--hd:#0a141d;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;margin:0;line-height:1.1}
+header{background:var(--hd);color:var(--onhd);padding:22px 18px 0}
+.wrap{max-width:560px;margin:0 auto}
+header h1{font-size:2.6rem;letter-spacing:.5px}
+header p{margin:4px 0 16px;color:#c3d1dd}
+.tape{display:flex;gap:0;margin:0 -18px;background:var(--acc);color:var(--onacc);font-family:"Barlow Condensed",Arial,sans-serif;font-weight:700;font-size:1.15rem}
+.tape span{flex:1;text-align:center;padding:9px 4px;border-right:2px solid var(--hd)}
+.tape span:last-child{border-right:0}
+main{padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.card h2{font-size:1.6rem;margin-bottom:6px}
+.sub{color:var(--mut);margin:0 0 14px}
+label{display:block;font-weight:600;margin:12px 0 5px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px}
+textarea{min-height:90px;resize:vertical}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button,.btn{font:inherit;font-weight:600;border:0;border-radius:10px;padding:12px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+button:disabled{opacity:.6;cursor:wait}
+.prim{background:var(--acc);color:var(--onacc);width:100%;margin-top:16px;font-size:1.05rem}
+.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.err{color:#c0392b;margin:10px 0 0;min-height:1.2em;font-weight:500}
+.hidden{display:none!important}
+.result{border-left:6px solid var(--acc);background:var(--bg);border-radius:10px;padding:14px;margin-top:16px}
+.price{font-family:"Barlow Condensed",Arial,sans-serif;font-size:2rem;font-weight:700}
+.free{background:var(--ok);color:#fff;border-radius:10px;padding:12px 14px;margin-top:12px;font-weight:600}
+table{width:100%;border-collapse:collapse}
+td{padding:9px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.row .btn{background:var(--hd);color:var(--onhd)}
+.row .wa{background:#1fa855;color:#fff}
+.row .alt{background:transparent;color:var(--ink)}
+.small{font-size:.9rem;color:var(--mut)}
+footer{text-align:center;padding:6px 18px 28px;color:var(--mut);font-size:.9rem}
+.list{display:grid;gap:8px;margin-top:8px}
+.item{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);word-break:break-word}
+.item .btn,.item button{margin-top:8px;padding:8px 12px;font-size:.9rem;background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.codebox{font-family:"Barlow Condensed",Arial,sans-serif;font-size:2rem;font-weight:700;letter-spacing:1px}
+.gbtn{background:var(--bg);color:var(--ink);border:1.5px solid var(--line);width:100%;font-size:1.05rem}
+.out{background:transparent;color:var(--mut);border:0;text-decoration:underline;margin:0 auto 18px;display:block}
+.scan{border:1.5px dashed var(--line);border-radius:12px;padding:14px;margin:10px 0 4px}
+.scan h3{font-size:1.35rem;margin-bottom:4px}
+.chk{list-style:none;margin:12px 0 0;padding:0;font-size:.95rem}
+.chk li{padding:6px 0;border-bottom:1px solid var(--line)}
+.chk b{font-weight:600}
+.sug{display:grid;margin-top:6px;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.sug button{background:transparent;color:var(--ink);border-radius:0;justify-content:flex-start;text-align:left;font-weight:500;border-bottom:1px solid var(--line);padding:11px 12px}
+.sug button:last-child{border-bottom:0}
+.tip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0 0;font-size:.95rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Service Rapide</h1>
+    <p>Réparation de téléphones à Toamasina</p>
+  </div>
+  <div class="tape" aria-label="Nos engagements"><span>RAPIDE</span><span>SÉCURISÉ</span><span>GARANTIE</span></div>
+</header>
+
+<main class="wrap">
+  <button class="btn alt hidden" id="inst" type="button" style="width:100%;margin-bottom:16px">Installer l’application sur mon téléphone</button>
+  <p id="load" class="sub" style="text-align:center;padding:30px 0">Chargement…</p>
+
+  <section class="card hidden" id="s1">
+    <h2>Connexion</h2>
+    <p class="sub">Connectez-vous pour utiliser le diagnostic de Service Rapide.</p>
+    <button class="gbtn" id="g" type="button">Continuer avec Google</button>
+    <p class="err" id="e1" role="alert"></p>
+  </section>
+
+  <section class="card hidden" id="s2">
+    <h2>Code d’accès</h2>
+    <p class="sub">Entrez le code personnel donné par Service Rapide. Il ne marche qu’une fois et pour un seul compte.</p>
+    <label for="code">Code</label>
+    <input id="code" autocapitalize="characters" autocomplete="off" placeholder="SR-XXXXXXXXXX">
+    <button class="prim" id="go2" type="button">Entrer</button>
+    <p class="err" id="e2" role="alert"></p>
+  </section>
+
+  <section class="card hidden" id="s3">
+    <h2>Diagnostic de votre téléphone</h2>
+    <p class="sub" id="hello"></p>
+    <div class="scan">
+      <h3>Vérification rapide du téléphone</h3>
+      <p class="small" style="margin:0 0 10px">Si vous êtes sur le téléphone à réparer, ce test lit son modèle, sa version Android, sa batterie et son écran.</p>
+      <button class="alt" id="chk" type="button" style="width:100%">Vérifier ce téléphone</button>
+      <ul class="chk hidden" id="chkres" aria-live="polite"></ul>
+      <button class="prim hidden" id="chkuse" type="button" style="margin-top:10px">Utiliser ces infos</button>
+    </div>
+    <label for="type">Type de téléphone</label>
+    <select id="type"><option value="android">Android / smartphone</option><option value="touche">Téléphone à touches</option></select>
+    <label for="modele">Marque et modèle exact</label>
+    <input id="modele" placeholder="Tapez une marque : Samsung, Xiaomi, Tecno…" autocomplete="off" autocapitalize="words" role="combobox" aria-expanded="false" aria-controls="sug">
+    <div class="sug hidden" id="sug" role="listbox"></div>
+    <p class="small" id="detect"></p>
+    <label for="pq">Quel est le problème ?</label>
+    <input id="pq" placeholder="Rechercher : logo, eau, écran, FRP, batterie…" autocomplete="off">
+    <select id="panne" style="margin-top:8px"></select>
+    <label for="desc">Décrivez la panne</label>
+    <textarea id="desc" maxlength="440" placeholder="Ex. Il est tombé hier, l’écran est noir mais le téléphone sonne. Depuis quand ? Une chute ? De l’eau ?"></textarea>
+    <label for="tel">Votre numéro (WhatsApp ou appel)</label>
+    <input id="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="Ex. 034 00 000 00">
+    <button class="prim" id="go3" type="button">Voir le diagnostic et le prix</button>
+    <p class="err" id="e3" role="alert"></p>
+    <div class="result hidden" id="res" aria-live="polite">
+      <h3 id="rt"></h3>
+      <p id="rd" style="margin:6px 0"></p>
+      <p class="tip hidden" id="rtip"></p>
+      <div class="price" id="rp"></div>
+      <p class="small">Prix indicatif : il change selon la marque et le modèle, et il est confirmé à l’atelier après vérification.</p>
+      <p class="small" id="sent"></p>
+      <div class="free">Vous pouvez apporter votre téléphone directement à l’atelier : le diagnostic est gratuit sur place.</div>
+      <div class="row">
+        <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>
+        <a class="btn" href="tel:+261338544861">Appeler maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="adm">
+    <h2>Espace Service Rapide</h2>
+    <p class="sub">Visible seulement pour toi.</p>
+    <label for="jours">Durée du code (jours)</label>
+    <input id="jours" type="number" min="1" max="365" value="7">
+    <label for="note">Client (pour te repérer)</label>
+    <input id="note" maxlength="60" placeholder="Ex. Rakoto, Samsung A12">
+    <button class="prim" id="mk" type="button">Créer un code</button>
+    <div class="result hidden" id="newc" aria-live="polite"></div>
+    <h3 style="margin-top:20px">Codes</h3>
+    <div id="codes" class="list"></div>
+    <h3 style="margin-top:20px">Dossiers reçus</h3>
+    <div id="dos" class="list"></div>
+  </section>
+
+  <section class="card">
+    <h2>Nos prix</h2>
+    <p class="sub">À partir de, selon le modèle. Pièces neuves.</p>
+    <table>
+      <tr><td>Écran neuf scellé</td><td>70 000 Ar</td></tr>
+      <tr><td>Batterie neuve</td><td>30 000 Ar</td></tr>
+      <tr><td>Dos neuf</td><td>30 000 Ar</td></tr>
+      <tr><td>Circuit de charge, téléphone à touches</td><td>5 000 Ar</td></tr>
+      <tr><td>Circuit de charge, Android</td><td>10 000 Ar</td></tr>
+      <tr><td>Déblocage FRP ou compte Samsung</td><td>10 000 Ar</td></tr>
+      <tr><td>Création de compte Google, etc.</td><td>4 000 Ar</td></tr>
+      <tr><td>Installation d’application</td><td>1 000 Ar</td></tr>
+    </table>
+    <p class="small">Garantie sur tous nos services.</p>
+  </section>
+
+  <section class="card">
+    <h2>Notre atelier</h2>
+    <p style="margin:0 0 4px"><strong>Toamasina, Tanambao 2, rue Bazary Kely</strong><br>Bazary, près de Réfrigepêche, Madagascar</p>
+    <div class="row">
+      <a class="btn" href="tel:+261338544861">033 85 448 61</a>
+      <a class="btn" href="tel:+261379760700">037 97 607 00</a>
+    </div>
+    <div class="row">
+      <a class="btn wa" href="https://wa.me/261338544861" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn alt" href="mailto:stevegg501@gmail.com">E-mail</a>
+    </div>
+    <p class="small" style="margin-top:12px">Paiement possible par MVola ou Orange Money sur nos deux numéros.</p>
+    <a class="btn alt" style="margin-top:8px;width:100%" href="https://www.google.com/maps/search/?api=1&amp;query=Bazary+Kely+Tanambao+2+Toamasina" target="_blank" rel="noopener">Ouvrir sur la carte</a>
+  </section>
+  <button class="out hidden" id="out" type="button">Se déconnecter</button>
+</main>
+<footer>Service Rapide : rapide, sécurisé, garantie.</footer>
+
+<script>
+let dp=null;
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;document.getElementById("inst").classList.remove("hidden")});
+document.getElementById("inst").onclick=async function(){if(!dp)return;dp.prompt();await dp.userChoice;dp=null;this.classList.add("hidden")};
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+setTimeout(function(){var l=document.getElementById("load");if(l&&!l.classList.contains("hidden"))l.textContent="Chargement trop long. Vérifiez votre connexion ou appelez le 033 85 448 61."},10000);
+</script>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,addDoc,deleteDoc,collection,getDocs,query,orderBy,limit,runTransaction,serverTimestamp,Timestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const cfg={apiKey:"AIzaSyBGqkqJ2BzvIm5NuXVgD-BYsABYi3TEzIk",authDomain:"service-rapide-1c34a.firebaseapp.com",projectId:"service-rapide-1c34a",storageBucket:"service-rapide-1c34a.firebasestorage.app",messagingSenderId:"476203047558",appId:"1:476203047558:web:b10189dba14c6bd582cf07"};
+const ADMIN="stevegg501@gmail.com";
+const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);
+const $=i=>document.getElementById(i);
+const only=id=>["load","s1","s2","s3"].forEach(x=>$(x).classList.toggle("hidden",x!==id));
+const fmt=n=>n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ")+" Ar";
+const day=t=>t.toDate().toLocaleDateString("fr-FR");
+function el(tag,text,cls){const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e}
+let me=null,isAdmin=false;
+
+const PANNES={
+ ecran:["Écran à remplacer","Un écran neuf scellé règle ce problème. Nous vérifions d’abord la compatibilité LCD avec votre modèle.",70000,"Écran cassé ou qui ne s’affiche plus","Si l’écran est cassé, collez un film transparent dessus pour ne pas vous couper, et ne le réinitialisez pas."],
+ tactile:["Tactile à vérifier","Un tactile qui ne répond plus ou qui bouge tout seul vient souvent de l’écran, parfois du logiciel. Le diagnostic le dit vite.",null,"Tactile qui ne répond plus ou bouge tout seul","Retirez la vitre de protection, séchez-vous les mains et redémarrez le téléphone pour tester."],
+ batterie:["Batterie à remplacer","Une batterie neuve redonne de l’autonomie et supprime le risque de gonflement.",30000,"Batterie qui se vide vite ou gonflée","Si la batterie est gonflée, arrêtez de l’utiliser et ne la chargez plus."],
+ dos:["Dos à remplacer","Nous posons un dos neuf adapté à votre modèle.",30000,"Dos ou cache arrière cassé","Collez un ruban transparent sur les éclats. Si le dos se soulève, arrêtez de charger le téléphone."],
+ charge:["Circuit de charge à réparer","Le port ou le circuit de charge est probablement en cause.",null,"Ne charge plus (circuit de charge)","Avant de venir, essayez un autre chargeur et un autre câble. Ne forcez pas sur le câble."],
+ allume:["Téléphone qui ne s’allume plus","Cause possible : batterie, circuit de charge, logiciel ou carte mère. Le diagnostic gratuit permet de savoir laquelle.",null,"Ne s’allume plus ou écran noir","Laissez-le brancher 30 minutes sur un chargeur d’origine, puis maintenez le bouton marche 10 secondes."],
+ logo:["Blocage au logo ou redémarrage en boucle","Le téléphone reste bloqué sur le logo (Mi, Samsung, Tecno…) ou redémarre sans arrêt. C’est souvent un problème logiciel ou de mémoire, parfois la batterie. Une réparation du système règle souvent le cas.",null,"Bloqué sur le logo (Mi, Samsung…) ou redémarre en boucle","Si vous voulez garder vos photos, ne faites pas de réinitialisation vous-même : dites-le-nous d’abord."],
+ frp:["Téléphone verrouillé par compte Google (FRP)","Après une réinitialisation, le téléphone demande le compte Google d’avant. Si vous ne l’avez plus, nous pouvons étudier le déblocage selon le modèle.",null,"Verrouillé par compte Google (FRP)","Apportez une preuve que le téléphone est à vous (facture, boîte ou IMEI). Nous ne débloquons pas un téléphone sans preuve."],
+ code:["Code, schéma ou empreinte oublié","Selon le modèle, nous pouvons déverrouiller le téléphone. Dans certains cas, les données sont perdues.",null,"Code, schéma ou empreinte oublié","Apportez une preuve que le téléphone est à vous. Évitez d’essayer trop de codes : le téléphone se bloque plus longtemps."],
+ eau:["Téléphone tombé dans l’eau","Plus on attend, plus l’oxydation abîme la carte. Un nettoyage rapide augmente les chances de le sauver.",null,"Tombé dans l’eau ou humide","Éteignez-le, ne le branchez pas et apportez-le vite à l’atelier."],
+ son:["Son à réparer","Haut-parleur, écouteur ou micro : la cause est souvent un composant ou la prise de charge. Le diagnostic le confirme.",null,"Micro, haut-parleur ou son","Vérifiez le volume, retirez la coque et nettoyez les grilles avec une brosse sèche."],
+ camera:["Caméra à vérifier","Une caméra floue, noire ou qui plante vient d’un module à remplacer ou d’un problème logiciel.",null,"Caméra ou flash","Nettoyez la lentille, retirez le film de protection et redémarrez le téléphone."],
+ reseau:["Réseau, SIM ou Wi-Fi à vérifier","Pas de réseau, SIM non reconnue, Wi-Fi ou Bluetooth coupé : cela peut venir du logiciel, du lecteur SIM ou de la carte.",null,"SIM, réseau, Wi-Fi ou Bluetooth","Activez le mode avion 10 secondes, redémarrez et testez la SIM dans un autre téléphone."],
+ chauffe:["Surchauffe ou extinction toute seule","Souvent la batterie, le circuit de charge ou le logiciel. À contrôler avant que la carte soit abîmée.",null,"Chauffe ou s’éteint tout seul","Évitez de l’utiliser en charge tant qu’il chauffe."],
+ lent:["Lenteur ou logiciel à réparer","Téléphone lent, qui plante ou dont la mémoire est pleine : mise à jour, nettoyage ou réinstallation du système.",null,"Lent, plante ou mémoire pleine","Libérez de la place (vidéos WhatsApp, Téléchargements) et redémarrez le téléphone."],
+ google:["Création ou récupération de compte Google","Nous vous aidons à créer un compte Google (Gmail) ou à récupérer un compte dont vous avez oublié le mot de passe, directement sur votre téléphone.",null,"Création ou récupération de compte Google (Gmail)","Apportez votre téléphone et, si vous en avez, l’ancien numéro ou l’ancienne adresse du compte."],
+ compte:["Compte Mi, Samsung ou autre verrouillé","Le téléphone demande un compte (Mi Account, Samsung Account…) dont vous n’avez plus les accès. Nous étudions la solution selon le modèle.",null,"Compte Mi, Samsung ou autre verrouillé","Apportez une preuve que le téléphone est à vous (facture, boîte ou IMEI). Nous ne débloquons pas un téléphone sans preuve."],
+ donnees:["Sauvegarde ou transfert de données","Photos, contacts, WhatsApp : nous les sauvegardons ou les passons d’un ancien téléphone vers un nouveau.",null,"Sauvegarde ou transfert (contacts, photos, WhatsApp)","Si l’ancien téléphone s’allume, ne le réinitialisez pas avant le transfert."],
+ apps:["Installation d’applications et réglages","Installation de WhatsApp, Facebook et d’autres applications, mises à jour et réglages du téléphone.",null,"Installation d’applications ou réglages","Vérifiez qu’il reste de la place et que la date et l’heure sont justes."],
+ autre:["Diagnostic à faire à l’atelier","Ce type de panne demande de voir le téléphone. Le diagnostic est gratuit sur place.",null,"Autre problème (décrivez-le ci-dessous)","Décrivez ce que vous voyez et depuis quand : vous pouvez aussi l’apporter directement à l’atelier."]
+};
+
+onAuthStateChanged(auth,async u=>{
+ me=u;isAdmin=!!u&&u.email===ADMIN&&u.emailVerified;
+ $("adm").classList.toggle("hidden",!isAdmin);
+ $("out").classList.toggle("hidden",!u);
+ if(!u){only("s1");return}
+ if(isAdmin){enter();loadAdmin();return}
+ try{const s=await getDoc(doc(db,"access",u.uid));
+  if(s.exists()&&s.data().expiresAt.toMillis()>Date.now()){enter();return}
+ }catch(e){}
+ only("s2");
+});
+
+function enter(){
+ only("s3");
+ const nom=(me.displayName||"").trim();
+ $("hello").textContent=nom?"Bonjour "+nom+", décrivez votre téléphone.":"Bonjour, décrivez votre téléphone.";
+ getModel().then(d=>{if(d.name&&!$("modele").value){$("modele").value=d.name;$("detect").textContent="Modèle détecté sur votre appareil. Corrigez-le si besoin."}}).catch(()=>{});
+}
+
+/* ---------- Catalogue marques / modèles (moteur de recherche) ---------- */
+const CATALOG=[
+["Samsung",["Galaxy A03","Galaxy A04","Galaxy A04s","Galaxy A05","Galaxy A05s","Galaxy A10","Galaxy A10s","Galaxy A12","Galaxy A13","Galaxy A14","Galaxy A15","Galaxy A20","Galaxy A21s","Galaxy A22","Galaxy A23","Galaxy A24","Galaxy A25","Galaxy A30","Galaxy A32","Galaxy A33","Galaxy A34","Galaxy A50","Galaxy A51","Galaxy A52","Galaxy A53","Galaxy A54","Galaxy S8","Galaxy S9","Galaxy S10","Galaxy S10e","Galaxy S10+","Galaxy S20","Galaxy S21","Galaxy S22","Galaxy S23","Galaxy Note 8","Galaxy Note 9","Galaxy Note 10","Galaxy J2 Prime","Galaxy J7"]],
+["Xiaomi",["Mi 8","Mi 9","Mi 9T","Mi 10","Mi 11","Mi A1","Mi A2","Mi CC9 Pro","Redmi 9","Redmi 9A","Redmi 9C","Redmi 10","Redmi 10C","Redmi 12","Redmi 12C","Redmi 13C","Redmi Note 7","Redmi Note 8","Redmi Note 9","Redmi Note 10","Redmi Note 11","Redmi Note 12","Redmi Note 13","Poco X3","Poco X3 Pro","Poco X5","Poco M3","Poco F3"]],
+["Tecno",["Spark 5","Spark 6","Spark 7","Spark 8","Spark 9","Spark 10","Camon 16","Camon 17","Camon 18","Camon 19","Camon 20","Pova","Pop 5","Pop 6","Pop 7","Pop 8"]],
+["Infinix",["Hot 9","Hot 10","Hot 11","Hot 12","Hot 20","Hot 30","Note 8","Note 10","Note 11","Note 12","Smart 5","Smart 6","Smart 7","Smart 8","Zero X"]],
+["itel",["A17","A18","A48","A49","A56","P38","P40","S23","Vision 1","Vision 2","Vision 3"]],
+["Oppo",["A15","A16","A17","A31","A53","A54","A55","A57","A74","F11","Reno 5","Reno 6","Reno 7","Reno 8"]],
+["Realme",["C11","C15","C20","C21","C25","C30","C33","C35","C55","5","6","7","8","9","Narzo 50"]],
+["Vivo",["Y11","Y12","Y15","Y20","Y21","Y33s","Y36","V20","V21","V23"]],
+["Huawei",["Y6","Y7","Y9","P20 Lite","P30 Lite","P40 Lite","Nova 3i","Mate 20 Lite"]],
+["Honor",["8X","9X","X6","X7","X8"]],
+["Apple",["iPhone 6","iPhone 6s","iPhone 7","iPhone 7 Plus","iPhone 8","iPhone X","iPhone XR","iPhone XS","iPhone 11","iPhone 12","iPhone 13","iPhone 14"]],
+["Nokia",["C1","C2","C21","G10","G20","105","110"]],
+["Motorola",["Moto E7","Moto E20","Moto G7","Moto G8","Moto G9","Moto G10","Moto G20"]],
+["Google",["Pixel 3","Pixel 4","Pixel 5","Pixel 6"]],
+["Wiko",["Y61","Lenny","Jerry","Tommy"]],
+["Alcatel",["1","3","1B"]]
+];
+let FLAT=null;
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function flat(){if(!FLAT){FLAT=[];CATALOG.forEach(c=>c[1].forEach(m=>FLAT.push(c[0]+" "+m)))}return FLAT}
+function showSug(){
+ const q=norm($("modele").value.trim()),box=$("sug");box.textContent="";
+ if(q.length<2){box.classList.add("hidden");$("modele").setAttribute("aria-expanded","false");return}
+ const toks=q.split(/\s+/);
+ const score=n=>toks.filter(t=>(" "+n).indexOf(" "+t)>=0).length;
+ let hits=flat().filter(x=>{const n=norm(x);return toks.every(t=>n.indexOf(t)>=0)});
+ hits.sort((a,b)=>score(norm(b))-score(norm(a)));
+ hits=hits.slice(0,8);
+ hits.forEach(x=>{
+  const b=el("button",x);b.type="button";b.setAttribute("role","option");
+  b.onclick=()=>{$("modele").value=x;$("detect").textContent="";box.classList.add("hidden");$("modele").setAttribute("aria-expanded","false")};
+  box.appendChild(b);
+ });
+ if(!hits.length){const p=el("p","Pas dans la liste : gardez ce que vous avez tapé.","small");p.style.padding="10px 12px";p.style.margin="0";box.appendChild(p)}
+ box.classList.remove("hidden");$("modele").setAttribute("aria-expanded","true");
+}
+$("modele").addEventListener("input",showSug);
+document.addEventListener("click",e=>{if(e.target!==$("modele")&&!e.target.closest("#sug")){$("sug").classList.add("hidden");$("modele").setAttribute("aria-expanded","false")}});
+
+/* ---------- Liste des pannes ---------- */
+const MORE=`
+## Écran et tactile
+Lignes de couleur ou barres sur l’écran|Souvent l’écran est abîmé après un choc ou de la chaleur. Un écran neuf règle le plus souvent le problème.|Baissez la luminosité et n’appuyez pas sur l’écran en attendant.
+Tache noire, verte ou rose sur l’écran|La dalle est abîmée (choc, pression ou chaleur). La tache grandit avec le temps : l’écran est à remplacer.|Ne pressez pas la tache et évitez le soleil.
+Écran noir mais le téléphone sonne ou vibre|Le téléphone marche mais n’affiche plus : écran ou nappe à remplacer. Vos données sont en général conservées.|Ne le réinitialisez pas, apportez-le tel quel.
+Vitre fissurée mais l’écran marche encore|La fissure laisse entrer l’eau et la poussière et grandit. Le remplacement de la vitre ou de l’écran est conseillé.|Collez un film transparent sur la fissure pour ne pas vous couper.
+Écran qui clignote ou scintille|Cause possible : écran, nappe ou logiciel. Le test à l’atelier permet de trancher.|Redémarrez et baissez la luminosité pour tester.
+Une partie du tactile ne répond pas|Souvent l’écran abîmé, parfois une protection mal collée.|Retirez la vitre de protection, nettoyez l’écran et testez.
+Tactile qui bouge tout seul en charge|Le chargeur ou l’humidité perturbe le tactile ; parfois l’écran est en cause.|Testez avec un chargeur d’origine et les mains sèches.
+Écran trop sombre ou luminosité qui ne change pas|Réglage, capteur ou rétroéclairage de l’écran.|Désactivez la luminosité automatique et le mode économie d’énergie, puis testez.
+Écran qui ne tourne plus|Souvent un réglage ou le capteur de mouvement.|Activez « Rotation automatique » dans le menu rapide.
+## Batterie et charge
+Batterie qui tombe d’un coup (30 % à 0 %)|La batterie est usée et ne tient plus la charge : remplacement.|Gardez-le branché en attendant et évitez de le laisser tomber à 0 %.
+Charge très lente|Chargeur ou câble non adaptés, port sale ou batterie usée.|Essayez un câble et un chargeur d’origine, puis nettoyez le port éteint avec une brosse sèche.
+Charge qui s’arrête et reprend sans cesse|Câble défectueux ou port de charge usé.|Testez un autre câble sans le tordre dans le port.
+Charge seulement dans une certaine position|Le port est usé ou sale : nettoyage ou remplacement du port.|Éteignez-le et enlevez la poussière avec une brosse sèche, jamais avec une aiguille.
+Batterie gonflée, dos qui se soulève|Danger : une batterie gonflée peut chauffer ou s’enflammer. À remplacer vite.|Arrêtez de l’utiliser et de la charger, ne la percez pas et apportez-le à l’atelier.
+Message « Humidité détectée dans le port »|Le téléphone bloque la charge par sécurité à cause de l’humidité.|Débranchez et laissez sécher le port à l’air plusieurs heures sans charger.
+Message « Chargeur non compatible »|Câble ou chargeur non adapté, ou port abîmé.|Changez de câble et évitez les chargeurs sans marque.
+S’éteint à 20 ou 30 % de batterie|La batterie est usée : remplacement conseillé.|Gardez-le branché en attendant.
+## Démarrage et logiciel
+Bloqué sur le logo Mi (Xiaomi, Redmi, Poco)|Fréquent après une mise à jour, une mémoire pleine ou une coupure de batterie. Une réparation du système règle souvent le cas.|Maintenez le bouton marche 10 secondes pour forcer le redémarrage ; ne choisissez pas « Wipe data ».
+Bloqué sur le logo Samsung, Tecno ou Infinix|Souvent un problème système ou de mémoire, parfois la batterie.|Maintenez marche et volume bas 10 secondes pour forcer le redémarrage.
+Bloqué en mode Recovery ou Fastboot|Le téléphone démarre en mode technique après une erreur ou une touche coincée.|Maintenez marche 10 secondes pour redémarrer, sans choisir « Wipe data ».
+Message « Erreur système » ou « Android a un problème »|Application défectueuse, mémoire pleine ou système abîmé.|Redémarrez, libérez de la place et mettez à jour les applications.
+Redémarre tout seul de temps en temps|Logiciel, batterie ou application défectueuse.|Passez en mode sans échec et désinstallez les dernières applications installées.
+Applications qui se ferment toutes seules|Mémoire pleine, mise à jour ratée ou téléphone lent.|Libérez de la place (photos, vidéos) et mettez les applications à jour.
+Mémoire du téléphone pleine|Photos, vidéos et WhatsApp prennent la place et ralentissent le téléphone.|Sauvegardez vos photos, puis videz les vidéos WhatsApp et le dossier Téléchargements.
+Mise à jour bloquée ou qui plante|Manque de batterie, de place ou de connexion pendant la mise à jour.|Gardez plus de 50 % de batterie, du Wi-Fi et de la place libre.
+Publicités qui s’ouvrent toutes seules (virus)|Une application malveillante est installée.|Désinstallez les applications inconnues et installez seulement depuis le Play Store.
+Téléphone figé qui ne répond plus|Logiciel ou mémoire saturée.|Maintenez le bouton marche 10 secondes pour forcer le redémarrage.
+Play Store qui ne télécharge pas|Date fausse, cache plein ou problème de compte.|Vérifiez la date et l’heure et videz le cache du Play Store.
+IMEI absent ou « IMEI null »|Sans IMEI valide, le réseau ne marche pas ; une réparation logicielle est possible.|Composez *#06# pour vérifier l’IMEI et notez-le.
+Notifications qui n’arrivent pas|L’économie de batterie bloque les applications en arrière-plan.|Désactivez l’optimisation de la batterie pour l’application concernée.
+## Comptes et verrouillage
+iPhone verrouillé (Apple ID ou iCloud)|Un verrou iCloud ne se contourne pas : il se lève avec le compte du propriétaire ou avec Apple. Nous vous aidons à récupérer le compte.|Apportez la facture et la boîte pour faire la demande à Apple.
+Téléphone désactivé : « Réessayez dans X minutes »|Trop de codes faux ont été tapés.|Attendez la fin du délai et ne tapez pas de codes au hasard.
+Empreinte ou visage qui ne marche plus|Capteur sale, écran remplacé ou réglage à refaire.|Nettoyez le capteur, séchez vos doigts et enregistrez l’empreinte à nouveau.
+Compte Gmail piraté ou suspect|Quelqu’un d’autre utilise peut-être votre compte.|Changez le mot de passe depuis un autre appareil et activez la validation en 2 étapes.
+Création de compte Facebook, WhatsApp ou TikTok|Nous vous aidons à créer et à sécuriser vos comptes.|Préparez un numéro actif pour recevoir le code SMS.
+WhatsApp : changer de numéro ou de téléphone|Nous transférons vos discussions vers le nouveau numéro ou le nouveau téléphone.|Faites d’abord la sauvegarde dans Réglages > Discussions > Sauvegarde.
+Code SMS de vérification qui n’arrive pas|Réseau faible, SIM ou blocage temporaire de l’envoi.|Vérifiez le réseau et la mémoire des SMS, puis redemandez le code après quelques minutes.
+Mot de passe oublié (Facebook, Instagram…)|Nous vous aidons à récupérer l’accès avec votre numéro ou votre e-mail.|Cherchez l’ancien e-mail ou numéro lié au compte avant de venir.
+## Son, caméra et capteurs
+On n’entend pas l’autre pendant l’appel|Haut-parleur d’appel sale ou défectueux, ou volume d’appel trop bas.|Montez le volume d’appel et nettoyez la grille avec une brosse sèche.
+L’autre personne ne m’entend pas|Micro bouché ou défectueux.|Retirez la coque et testez en mode haut-parleur.
+Haut-parleur qui grésille ou son faible|Haut-parleur abîmé, sale ou mouillé.|Baissez le volume pour ne pas l’abîmer et nettoyez la grille.
+Casque ou écouteurs non reconnus|Prise sale ou défectueuse.|Nettoyez la prise téléphone éteint et testez d’autres écouteurs.
+Téléphone bloqué en « mode casque »|Humidité ou saleté dans la prise ou le port.|Branchez et débranchez les écouteurs plusieurs fois, puis redémarrez.
+Vibreur qui ne marche plus|Moteur de vibration ou simple réglage.|Vérifiez que le vibreur est activé dans « Son et vibration ».
+Caméra arrière floue|Lentille sale ou rayée, film de protection ou module abîmé.|Nettoyez la lentille et retirez le film de protection.
+Caméra avant qui ne marche pas|Module défectueux ou problème logiciel.|Fermez les autres applications et redémarrez le téléphone.
+« Impossible de se connecter à la caméra »|Application caméra bloquée ou module défectueux.|Redémarrez et videz le cache de l’application Caméra.
+Flash qui ne marche pas|Flash défectueux ou économie d’énergie activée.|Désactivez l’économie d’énergie et testez la lampe torche.
+Écran qui reste noir pendant l’appel|Capteur de proximité sale ou bloqué par un film.|Retirez le film de protection et nettoyez le haut de l’écran.
+GPS ou boussole qui ne marche pas|Réglage de localisation ou capteur défectueux.|Activez la localisation « haute précision » et sortez à l’air libre.
+Boutons volume ou marche cassés ou coincés|Le bouton est à remplacer.|Utilisez les boutons à l’écran (menu Accessibilité) en attendant.
+## Réseau et connexion
+Pas de réseau ou « Aucun service »|SIM, antenne, réseau ou logiciel.|Activez le mode avion 10 secondes, redémarrez et testez une autre SIM.
+SIM non détectée|Lecteur SIM sale, SIM abîmée ou logiciel.|Éteignez, retirez et remettez la SIM ; testez-la dans un autre téléphone.
+Wi-Fi qui ne se connecte pas|Réglage, box ou antenne Wi-Fi.|Oubliez le réseau, reconnectez-vous et redémarrez la box.
+Bluetooth qui ne marche pas|Réglage, appareil mal jumelé ou antenne.|Supprimez l’appareil jumelé et refaites l’association.
+Internet mobile (4G) qui ne marche pas|Forfait, réglage APN ou réseau.|Vérifiez le forfait et les données mobiles, puis redémarrez.
+Partage de connexion (hotspot) qui ne marche pas|Réglage ou forfait qui bloque le partage.|Vérifiez le forfait puis désactivez et réactivez le partage.
+Une des deux SIM n’est pas reconnue|Plateau SIM mal placé ou réglage double SIM.|Remettez les SIM dans le bon logement et redémarrez.
+## Dégâts et eau
+Tombé : écran noir ou cassé|Un choc peut abîmer l’écran, la nappe ou la carte.|Ne forcez pas la charge : apportez-le tel quel.
+Tombé : tactile cassé, ne s’allume pas et ne charge pas|Après une chute, le tactile est cassé et le téléphone ne s’allume plus ni ne charge : écran, carte ou circuit de charge sont à contrôler.|Ne forcez pas la charge et apportez-le tel quel pour limiter les dégâts.
+Cadre ou téléphone tordu|Un cadre plié peut abîmer la carte et l’écran.|Ne forcez pas pour le redresser.
+Port de charge cassé après un choc|Le port est à remplacer.|N’insérez pas le câble de force.
+Verre de la caméra cassé|La vitre de la caméra est à remplacer pour éviter la poussière.|Collez un ruban transparent en attendant.
+Tombé dans l’eau de mer|Le sel abîme très vite la carte : nettoyage en urgence.|Éteignez-le tout de suite, ne le branchez pas et apportez-le dans la journée.
+Buée ou humidité sous l’écran ou la caméra|De l’eau est entrée dans le téléphone.|Éteignez-le, ne le chargez pas et laissez-le dans un endroit sec et aéré.
+Fumée ou odeur de brûlé|Danger : batterie ou carte en court-circuit.|Éteignez et débranchez-le tout de suite, éloignez-le de tout ce qui brûle et ne le rechargez pas.
+## Données et applications
+Photos ou contacts supprimés par erreur|Une récupération est parfois possible, selon le cas.|Ne prenez plus de photos et n’installez rien pour garder vos chances.
+Récupérer les données d’un téléphone qui ne s’allume plus|Selon la panne, nous pouvons parfois récupérer photos et contacts.|Ne le réinitialisez pas et apportez-le tel quel.
+Contacts à sauvegarder ou à passer sur un nouveau téléphone|Nous les copions par compte Google ou par la SIM.|Vérifiez dans Contacts qu’ils sont synchronisés avec votre compte Google.
+Configuration d’un téléphone neuf|Compte Google, applications, contacts et réglages de base.|Apportez votre ancienne SIM et vos accès (e-mail, numéro).
+Pose d’un film ou d’une vitre de protection|Nous posons le film proprement, sans bulles.|Venez avec le téléphone propre ; le film peut aussi se choisir à l’atelier.
+Carte mémoire (SD) illisible|La carte est corrompue ou mal reconnue.|Ne la formatez pas avant d’avoir tenté de récupérer les fichiers.
+WhatsApp qui ne marche pas ou se bloque|Application à mettre à jour, mémoire pleine ou date fausse.|Mettez WhatsApp à jour et vérifiez l’espace libre et la date.
+Application qui ne s’installe pas|Place insuffisante, Play Store ou version d’Android trop ancienne.|Libérez de la place et vérifiez la date et la version d’Android.
+## Téléphone à touches
+Touches qui ne répondent plus|Clavier encrassé ou usé : nettoyage ou remplacement.|Éteignez-le et enlevez la poussière autour des touches.
+Écran blanc, noir ou avec des lignes|L’écran est à remplacer.|N’appuyez pas sur l’écran.
+Ne s’allume plus|Batterie, charge ou carte.|Si la batterie est amovible, essayez-en une autre ou un autre chargeur.
+Pas de réseau ou SIM non lue|SIM, lecteur de SIM ou antenne.|Remettez la SIM et testez-la dans un autre téléphone.
+Son faible ou haut-parleur qui grésille|Haut-parleur ou micro à nettoyer ou à remplacer.|Montez le volume et nettoyez la grille avec une brosse sèche.
+Batterie qui se vide vite|La batterie est usée.|Baissez la luminosité et désactivez le Bluetooth.
+Redémarre ou se bloque|Logiciel ou batterie.|Si la batterie est amovible, retirez-la une minute puis remettez-la.
+`;
+const GR_ORDER=["Écran et tactile","Batterie et charge","Démarrage et logiciel","Comptes et verrouillage","Son, caméra et capteurs","Réseau et connexion","Dégâts et eau","Données et applications","Téléphone à touches","Autre"];
+const GROUP={},BASE={ecran:0,tactile:0,batterie:1,charge:1,chauffe:1,allume:2,logo:2,lent:2,frp:3,code:3,compte:3,google:3,son:4,camera:4,reseau:5,eau:6,dos:6,donnees:7,apps:7,autre:9};
+Object.keys(BASE).forEach(k=>{GROUP[k]=GR_ORDER[BASE[k]]});
+(function(){let cur="",n=0;MORE.split("\n").forEach(l=>{l=l.trim();if(!l)return;if(l.indexOf("## ")===0){cur=l.slice(3);return}const a=l.split("|");if(a.length<3)return;const k="p"+(++n);PANNES[k]=[a[0],a[1],null,a[0],a[2]];GROUP[k]=cur})})();
+
+/* ---------- Prix « à partir de » (modifiez les chiffres ici) ---------- */
+const PRIX_CLE={eau:20000,frp:10000,compte:10000,code:10000,google:4000,apps:1000,donnees:3000,logo:10000,lent:5000,son:10000,camera:20000,reseau:10000};
+Object.keys(PRIX_CLE).forEach(k=>{PANNES[k][2]=PRIX_CLE[k]});
+const PRIX=[
+["Lignes de couleur",70000],["Tache noire",70000],["Écran noir mais le téléphone sonne",70000],["Vitre fissurée",70000],["Écran qui ne tourne plus",2000],
+["Batterie qui tombe",30000],["Charge très lente",5000],["Charge qui s’arrête",10000],["Charge seulement dans",10000],["Batterie gonflée",30000],["Message « Humidité",5000],["Message « Chargeur",5000],["S’éteint à 20",30000],
+["Bloqué sur le logo Mi",10000],["Bloqué sur le logo Samsung",10000],["Bloqué en mode Recovery",10000],["Message « Erreur système",10000],["Redémarre tout seul",5000],["Applications qui se ferment",5000],["Mémoire du téléphone pleine",3000],["Mise à jour bloquée",5000],["Publicités",5000],["Téléphone figé",5000],["Play Store",2000],["IMEI absent",10000],["Notifications qui",2000],
+["Empreinte ou visage",3000],["Compte Gmail piraté",4000],["Création de compte Facebook",4000],["WhatsApp : changer",4000],["Code SMS",2000],["Mot de passe oublié (Facebook",4000],
+["On n’entend pas",10000],["L’autre personne",10000],["Haut-parleur qui grésille",10000],["Casque ou écouteurs",10000],["Téléphone bloqué en « mode casque",5000],["Vibreur",10000],["Caméra arrière floue",20000],["Caméra avant",20000],["« Impossible de se connecter",5000],["Flash qui",10000],["Écran qui reste noir pendant",2000],["GPS ou boussole",5000],["Boutons volume",10000],
+["Pas de réseau ou « Aucun",10000],["SIM non détectée",10000],["Wi-Fi qui",5000],["Bluetooth qui",5000],["Internet mobile",2000],["Partage de connexion",2000],["Une des deux SIM",5000],
+["Port de charge cassé",10000],["Tombé : tactile cassé",80000],["Tombé dans l’eau de mer",20000],["Buée",20000],["iPhone verrouillé",20000],["Verre de la caméra",5000],
+["Contacts à sauvegarder",2000],["Configuration d’un téléphone neuf",5000],["Pose d’un film",2000],["WhatsApp qui ne marche",2000],["Application qui ne s’installe",1000],
+["Touches qui ne répondent",5000],["Pas de réseau ou SIM non lue",5000],["Son faible ou haut-parleur",5000],["Redémarre ou se bloque",5000]
+];
+PRIX.forEach(x=>{const k=Object.keys(PANNES).find(i=>PANNES[i][0].indexOf(x[0])===0);if(k)PANNES[k][2]=x[1]});
+function buildOptions(f){
+ const sel=$("panne"),old=sel.value;sel.textContent="";
+ const toks=norm(f||"").split(/\s+/).filter(Boolean);
+ GR_ORDER.forEach(g=>{
+  const og=document.createElement("optgroup");og.label=g;
+  Object.keys(PANNES).forEach(k=>{
+   if(GROUP[k]!==g)return;
+   const p=PANNES[k],t=norm(p[3]+" "+p[1]);
+   if(k!=="autre"&&!toks.every(x=>t.indexOf(x)>=0))return;
+   const o=document.createElement("option");o.value=k;o.textContent=p[3];og.appendChild(o);
+  });
+  if(og.children.length)sel.appendChild(og);
+ });
+ if(old&&sel.querySelector('option[value="'+old+'"]'))sel.value=old;
+}
+buildOptions("");
+$("pq").addEventListener("input",()=>buildOptions($("pq").value));
+
+/* ---------- Vérification de l’appareil ---------- */
+const CODES={"SM-G973":"Samsung Galaxy S10","SM-G975":"Samsung Galaxy S10+","SM-G970":"Samsung Galaxy S10e","SM-G960":"Samsung Galaxy S9","SM-G965":"Samsung Galaxy S9+","SM-G950":"Samsung Galaxy S8","SM-G955":"Samsung Galaxy S8+","SM-A515":"Samsung Galaxy A51","SM-A505":"Samsung Galaxy A50","SM-A125":"Samsung Galaxy A12","SM-A135":"Samsung Galaxy A13","SM-A145":"Samsung Galaxy A14","SM-A105":"Samsung Galaxy A10","SM-A107":"Samsung Galaxy A10s","SM-A207":"Samsung Galaxy A20s","SM-A307":"Samsung Galaxy A30s","SM-A325":"Samsung Galaxy A32","SM-A225":"Samsung Galaxy A22","SM-A035":"Samsung Galaxy A03"};
+function brandOf(s){
+ s=String(s).toLowerCase();
+ if(!s)return"";
+ if(/^sm-|samsung/.test(s))return"Samsung";
+ if(/redmi|poco|xiaomi|^mi\b|^m\d{4}[a-z]\d|^\d{7}[a-z]|^\d{6}[a-z]{3}/.test(s))return"Xiaomi (probable)";
+ if(/tecno/.test(s))return"Tecno";
+ if(/infinix/.test(s))return"Infinix";
+ if(/itel/.test(s))return"itel";
+ if(/^cph|oppo/.test(s))return"Oppo";
+ if(/^rmx|realme/.test(s))return"Realme";
+ if(/vivo/.test(s))return"Vivo";
+ if(/huawei|honor/.test(s))return"Huawei / Honor";
+ return"";
+}
+async function getModel(){
+ let model="",ver="";
+ const ua=navigator.userAgent||"";
+ try{
+  if(navigator.userAgentData&&navigator.userAgentData.getHighEntropyValues){
+   const h=await navigator.userAgentData.getHighEntropyValues(["model","platformVersion"]);
+   model=(h.model||"").trim();ver=(h.platformVersion||"").trim();
+  }
+ }catch(e){}
+ const m=/Android ([\d.]+); ([^;)]+)/.exec(ua);
+ if(!ver&&m)ver=m[1];
+ if(!model&&m)model=m[2].replace(/ Build.*/,"").trim();
+ if(model.length<3)model="";
+ let name=model;
+ for(const k in CODES){if(model.toUpperCase().indexOf(k)===0){name=CODES[k];break}}
+ return {model:model,name:name,ver:ver.replace(/(\.0)+$/,""),brand:brandOf(model)};
+}
+let devInfo="",devName="";
+$("chk").onclick=async()=>{
+ const b=$("chk"),ul=$("chkres");b.disabled=true;ul.textContent="";
+ const add=(k,v)=>{const li=el("li");li.appendChild(el("b",k+" : "));li.appendChild(document.createTextNode(v));ul.appendChild(li)};
+ const short=[];
+ try{
+  const d=await getModel();
+  if(d.name){add("Modèle",d.name+(d.model&&d.name!==d.model?" ("+d.model+")":""));short.push(d.name)}
+  else add("Modèle","non lisible par le navigateur : tapez-le plus bas");
+  if(d.brand)add("Marque",d.brand);
+  if(d.ver){add("Android",d.ver);short.push("Android "+d.ver)}
+  add("Écran",Math.round(screen.width*(window.devicePixelRatio||1))+" × "+Math.round(screen.height*(window.devicePixelRatio||1))+" pixels");
+  try{
+   if(navigator.getBattery){const bt=await navigator.getBattery(),pc=Math.round(bt.level*100);add("Batterie",pc+" % ("+(bt.charging?"en charge":"pas en charge")+")");short.push("batterie "+pc+"%"+(bt.charging?" en charge":""))}
+   else add("Batterie","non lisible sur ce navigateur");
+  }catch(e){add("Batterie","non lisible")}
+  if(navigator.deviceMemory){add("Mémoire (RAM)","environ "+navigator.deviceMemory+" Go");short.push("RAM ~"+navigator.deviceMemory+" Go")}
+  if(navigator.connection&&navigator.connection.effectiveType)add("Réseau",String(navigator.connection.effectiveType).toUpperCase());
+  const li=el("li","Ce test ne voit pas les pannes matérielles ni le verrouillage FRP. Le diagnostic à l’atelier reste gratuit.","small");li.style.borderBottom="0";ul.appendChild(li);
+  devName=d.name;devInfo=short.join(", ").slice(0,150);
+  ul.classList.remove("hidden");$("chkuse").classList.remove("hidden");
+  b.textContent="Relancer la vérification";
+ }catch(e){ul.classList.remove("hidden");add("Erreur","la vérification a échoué sur ce navigateur")}
+ b.disabled=false;
+};
+$("chkuse").onclick=()=>{
+ if(devName){$("modele").value=devName;$("detect").textContent="Modèle repris de la vérification. Corrigez-le si besoin."}
+ $("sug").classList.add("hidden");$("panne").focus();
+};
+
+$("g").onclick=async()=>{
+ $("e1").textContent="";
+ try{await signInWithPopup(auth,new GoogleAuthProvider())}
+ catch(e){
+  const c=e&&e.code;
+  if(c==="auth/popup-blocked"){try{await signInWithRedirect(auth,new GoogleAuthProvider());return}catch(x){}}
+  $("e1").textContent=(c==="auth/popup-closed-by-user"||c==="auth/cancelled-popup-request")?"Connexion annulée. Réessayez.":"Connexion impossible. Ouvrez le site dans Chrome et réessayez.";
+ }
+};
+$("out").onclick=()=>signOut(auth);
+
+$("go2").onclick=async()=>{
+ const c=$("code").value.trim().toUpperCase().replace(/[^A-Z0-9-]/g,"");
+ if(!c){$("e2").textContent="Entrez votre code.";return}
+ $("go2").disabled=true;
+ $("e2").textContent="Vérification…";
+ try{
+  await runTransaction(db,async tx=>{
+   const cr=doc(db,"codes",c),s=await tx.get(cr);
+   if(!s.exists())throw new Error("bad");
+   const d=s.data();
+   if(d.claimedBy)throw new Error("used");
+   if(d.expiresAt.toMillis()<Date.now())throw new Error("exp");
+   tx.update(cr,{claimedBy:me.uid,claimedAt:serverTimestamp()});
+   tx.set(doc(db,"access",me.uid),{code:c,expiresAt:d.expiresAt});
+  });
+  $("e2").textContent="";enter();
+ }catch(e){
+  const m=e&&e.message;
+  $("e2").textContent=m==="bad"?"Code incorrect. Demandez-le à Service Rapide.":m==="used"?"Ce code a déjà été utilisé.":m==="exp"?"Ce code a expiré. Demandez-en un nouveau.":"Impossible de vérifier le code. Vérifiez votre connexion et réessayez.";
+ }
+ $("go2").disabled=false;
+};
+
+function cleanTel(s){
+ let n=String(s).replace(/[\s.\-()]/g,"");
+ if(n.indexOf("+261")===0)n="0"+n.slice(4);
+ else if(n.indexOf("261")===0&&n.length===12)n="0"+n.slice(3);
+ return /^03\d{8}$/.test(n)?n:"";
+}
+
+$("go3").onclick=async()=>{
+ const modele=$("modele").value.trim(),desc=$("desc").value.trim(),telRaw=$("tel").value.trim(),k=$("panne").value,t=$("type").value;
+ if(!PANNES[k]){$("e3").textContent="Choisissez un problème dans la liste.";return}
+ if(!modele){$("e3").textContent="Entrez le modèle de votre téléphone.";return}
+ if(!desc){$("e3").textContent="Décrivez la panne en quelques mots.";return}
+ if(!telRaw){$("e3").textContent="Entrez votre numéro pour que nous puissions vous rappeler.";return}
+ const tel=cleanTel(telRaw);
+ if(!tel){$("e3").textContent="Numéro invalide. Exemple : 034 00 000 00.";return}
+ $("e3").textContent="";
+ $("go3").disabled=true;
+ const p=PANNES[k];let prix=p[2];
+ if(k==="charge")prix=t==="touche"?5000:10000;
+ $("rt").textContent=p[0];$("rd").textContent=p[1];
+ const tip=p[4]||"";$("rtip").textContent=tip;$("rtip").classList.toggle("hidden",!tip);
+ $("rp").textContent=prix?"À partir de "+fmt(prix):"Prix donné après diagnostic";
+ const nom=me.displayName||"Client";
+ const msg="Bonjour Service Rapide, je suis "+nom+".\nTéléphone : "+modele+"\nProblème : "+p[0]+"\nDétails : "+desc+"\nPrix estimé : "+(prix?"à partir de "+fmt(prix):"à voir")+"\n"+(devInfo?"Vérif. appareil : "+devInfo+"\n":"")+"Mon numéro : "+tel;
+ $("wa").href="https://wa.me/261338544861?text="+encodeURIComponent(msg);
+ $("sent").textContent="";
+ $("res").classList.remove("hidden");$("res").scrollIntoView({behavior:"smooth",block:"center"});
+ try{
+  await addDoc(collection(db,"dossiers"),{uid:me.uid,nom:nom,email:me.email||"",tel:tel,modele:modele,panne:p[0],desc:desc+(devInfo?"\n[Appareil] "+devInfo:""),prix:prix||0,createdAt:serverTimestamp()});
+  $("sent").textContent="Votre dossier a été envoyé à l’atelier. Nous vous rappelons.";
+ }catch(e){$("sent").textContent="Dossier non enregistré. Utilisez le bouton WhatsApp ou appelez-nous."}
+ $("go3").disabled=false;
+};
+
+function gen(){
+ const a="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let s="SR-";
+ crypto.getRandomValues(new Uint8Array(10)).forEach(b=>{s+=a[b%a.length]});return s;
+}
+$("mk").onclick=async()=>{
+ const days=Math.max(1,Math.min(365,parseInt($("jours").value,10)||7)),note=$("note").value.trim(),c=gen();
+ const box=$("newc");box.classList.remove("hidden");box.textContent="Création…";
+ try{
+  await setDoc(doc(db,"codes",c),{claimedBy:null,note:note,createdAt:serverTimestamp(),expiresAt:Timestamp.fromMillis(Date.now()+days*864e5)});
+  box.textContent="";
+  box.appendChild(el("div",c,"codebox"));
+  box.appendChild(el("p","Valable "+days+" jour(s), un seul compte. Envoyez-le au client.","small"));
+  const w=el("a","Envoyer par WhatsApp","btn wa");w.style.marginTop="8px";w.target="_blank";w.rel="noopener";
+  w.href="https://wa.me/?text="+encodeURIComponent("Service Rapide : votre code d’accès est "+c+" (valable "+days+" jours).");
+  box.appendChild(w);
+  $("note").value="";loadAdmin();
+ }catch(e){box.textContent="Création impossible. Vérifiez les règles Firestore."}
+};
+
+async function loadAdmin(){
+ const cl=$("codes"),dl=$("dos");cl.textContent="";dl.textContent="";
+ try{
+  const cs=await getDocs(query(collection(db,"codes"),orderBy("expiresAt","desc"),limit(30)));
+  if(cs.empty)cl.appendChild(el("p","Aucun code pour l’instant.","small"));
+  cs.forEach(d=>{
+   const x=d.data(),exp=x.expiresAt.toMillis()<Date.now();
+   const it=el("div","","item");
+   it.appendChild(el("strong",d.id));
+   it.appendChild(el("div",(x.note||"Sans nom")+" : "+(x.claimedBy?"utilisé":exp?"expiré":"libre")+", jusqu’au "+day(x.expiresAt),"small"));
+   const b=el("button","Supprimer");b.type="button";
+   b.onclick=async()=>{if(!confirm("Supprimer le code "+d.id+" ?"))return;try{await deleteDoc(doc(db,"codes",d.id));loadAdmin()}catch(e){}};
+   it.appendChild(b);cl.appendChild(it);
+  });
+ }catch(e){cl.appendChild(el("p","Liste des codes indisponible.","small"))}
+ try{
+  const ds=await getDocs(query(collection(db,"dossiers"),orderBy("createdAt","desc"),limit(30)));
+  if(ds.empty)dl.appendChild(el("p","Aucun dossier pour l’instant.","small"));
+  ds.forEach(d=>{
+   const x=d.data(),it=el("div","","item");
+   it.appendChild(el("strong",x.nom+" : "+x.modele));
+   it.appendChild(el("div",x.panne+(x.prix?", à partir de "+fmt(x.prix):""),"small"));
+   it.appendChild(el("div",x.desc));
+   const n=String(x.tel||"").replace(/\D/g,"");
+   if(n){const a=el("a","Appeler "+x.tel,"btn");a.href="tel:"+n;a.style.display="inline-flex";a.style.marginRight="8px";it.appendChild(a)}
+   const b=el("button","Terminé");b.type="button";
+   b.onclick=async()=>{if(!confirm("Marquer ce dossier comme terminé (il sera supprimé) ?"))return;try{await deleteDoc(doc(db,"dossiers",d.id));loadAdmin()}catch(e){}};
+   it.appendChild(b);dl.appendChild(it);
+  });
+ }catch(e){dl.appendChild(el("p","Liste des dossiers indisponible.","small"))}
+}
+</script>
+</body>
+</html>
